@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--  Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700&display=swap&subset=cyrillic" rel="stylesheet">
+    <!-- Fa-icons  -->
+    <script src="https://kit.fontawesome.com/5f2c5e81d1.js"></script>
+
+    <title>Сокіл - Контакти</title>
+</head>
+<body>
+  <!-- Menu -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+      <a href="#" class="navbar-brand">
+        <img src="img/main-logo-sokil.png" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="index.html" class="nav-link">Головна</a>
+          </li>
+          <li class="nav-item">
+            <a href="windows.html" class="nav-link">Вікна</a>
+          </li>            
+          <li class="nav-item">
+            <a href="doors.html" class="nav-link">Двері</a>
+          </li>
+          <li class="nav-item">
+            <a href="balconies.html" class="nav-link">Балкони</a>
+          </li>
+          <li class="nav-item">
+            <a href="jalousie.html" class="nav-link">Жалюзі</a>
+          </li>
+          <li class="nav-item active">
+            <a href="contacts.php" class="nav-link">Контакти</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Menu  -->
+  <!-- Content -->
+  <section class="section-contacts">
+    <div class="container-fluid bg-color-w">
+      <div class="container section-contacts-content">
+        <div class="row justify-content-between">
+          <div class="col-12 col-md-6">
+            <div class="section-contacts-content__subtitle">
+              <div class="row justify-content-center">
+                <div class="col-6">
+                  <img class="rounded-circle w-100 mx-auto d-block" src="/img/Contacts/Sokil.png" alt="Sokil contact">
+                </div> 
+              </div>
+              <div class="text-center pb-1">
+                Сокіл Анатолій Іванович
+              </div>
+              <div class="text-center pb-1">
+                Майстер метало-пластикових конструкцій, віконної та балконної справи.
+              </div>  
+              <div class="text-center pb-3">
+                <a href="tel: +380934824594"><i class="fas fa-phone-alt"></i> +38 (093) 482 45 94</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="section-contacts-content__subtitle">
+              <div class="row justify-content-center">
+                <div class="col-6">
+                  <img class="rounded-circle w-100 mx-auto d-block" src="/img/Contacts/alla.jpg" alt="Sokil contact">
+                </div> 
+              </div>
+              <div class="text-center pb-1">
+                Резніченко Алла Леонідівна
+              </div>
+              <div class="text-center pb-1">
+                Головний специаліст по Жалюзі
+              </div>  
+              <div class="text-center pb-3">
+                <a href="tel: +380934824594"><i class="fas fa-phone-alt"></i> +38 (093) 482 45 94</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container section-contacts-content">
+        <div class="row">
+          <div class="col-10 col-md-5 col-lg-4 row mx-auto my-auto"> 
+            <img class="w-100 mx-auto d-block" src="/img/Contacts/zamir.png" alt="Zamir vikna">
+          </div>
+          <div class="col-12 col-md-7 col-lg-8 pb-3">
+            <div class="section-contacts-content__midtitle text-center pb-3">
+              Зворотній зв'язок
+            </div>
+            <form action="contacts.php" method="POST" id="mailForm">
+              <input type="email" id="email" name="email" placeholder="Email" class="form-control my-1">
+              <input type="text" id="name" name="name" placeholder="Ім'я" class="form-control my-1">
+              <input type="phone" id="phone" name="phone" placeholder="Телефон" class="form-control my-1">
+              <textarea type="text" name="message" id="message" placeholder="" class="form-control my-1"></textarea>
+              <button type="submit" id="SendMail" class="btn btn-success my-1">Відправити</button>
+              <?php 
+                if (!empty($_POST)){
+                  $message = "Новое сообщение с сайта Sokil.vn.ua: \n" 
+                  . " Имя отправителя: " . $_POST['name'] . "\n" 
+                  . " Email отправителя: " . $_POST['email'] . "\n" 
+                  . " Телефон отправителя: " . $_POST['phone'] . "\n"
+                  . " Сообщение: \n " . $_POST['message'];
+                  $headers = "From: info@sokil.vn.ua";
+                  $resultMail = mail("cossacki1vn@gmail.com", "Сообщение с сайта Sokil.vn.ua", $message, $headers);
+                  if ($resultMail){
+                    echo "Повідомлення успішно відправлено!";
+                  } else {
+                    echo "Щось пішло не так...";
+                  }
+                } 
+              ?>
+            </form>
+          </div>
+        </div>
+      </div>              
+    </div>
+  </section>
+  <!-- Content -->
+  <!-- Footer -->
+  <footer id="sokilFooter" class="py-4">
+    <div class="container text-center">
+      <small>«СОКІЛ» - Вікна Двері Балкони Жалюзі &copy; 2019.</small>
+    </div>
+  </footer>
+  <!-- Footer -->
+        
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/JavaScript/main.js"></script>
+</body>
+</html>
